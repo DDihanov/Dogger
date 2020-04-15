@@ -22,7 +22,8 @@ class App : Application() {
                 apiModule,
                 retrofitModule,
                 dbModule,
-                utilModule
+                utilModule,
+                mapperModule
             ))
         }
     }

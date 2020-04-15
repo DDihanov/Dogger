@@ -3,6 +3,7 @@ package com.dihanov.dogger.di
 import androidx.room.Room
 import com.dihanov.dogger.BuildConfig
 import com.dihanov.dogger.data.local.db.AppDb
+import com.dihanov.dogger.data.local.mapper.DogMapper
 import com.dihanov.dogger.data.local.repository.DogRepository
 import com.dihanov.dogger.data.remote.ApiEndpoint
 import com.dihanov.dogger.data.remote.ApiService
@@ -28,7 +29,7 @@ val utilModule = module {
 
 val repositoryModule = module {
     single {
-        DogRepository(get(), get())
+        DogRepository(get(), get(), get())
     }
 }
 
@@ -50,6 +51,10 @@ val dbModule = module {
             .fallbackToDestructiveMigration()
             .build()
     }
+}
+
+val mapperModule = module {
+    single { DogMapper() }
 }
 
 val retrofitModule = module {
