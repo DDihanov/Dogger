@@ -1,18 +1,14 @@
 package com.dihanov.dogger.data.local.repository
 
-import androidx.lifecycle.LiveData
 import com.dihanov.dogger.data.local.db.AppDb
 import com.dihanov.dogger.data.local.db.entity.Dog
-import com.dihanov.dogger.data.local.mapper.DogMapper
-import com.dihanov.dogger.data.local.usecase.SearchDogsUseCase
 import com.dihanov.dogger.data.model.BaseResponse
 import com.dihanov.dogger.data.remote.ApiService
 
 //both options are viable
 class DogRepository(
     private val apiService: ApiService,
-    private val db: AppDb,
-    private val dogMapper: DogMapper
+    private val db: AppDb
 ) {
     suspend fun getDog(breed: String, limit: Int, shouldFetch: Boolean = false) =
         object : ResultLoader<List<Dog>, List<String>>() {
@@ -30,9 +26,11 @@ class DogRepository(
         }.execute()
 
 
-    suspend fun getDog2(breed: String, limit: Int, shouldFetch: Boolean = false): LiveData<Resource<List<Dog>>> {
-        val useCase = SearchDogsUseCase(breed, limit, db, shouldFetch, dogMapper, apiService)
-        useCase.execute()
-        return useCase.data
+    suspend fun getDog2(breed: String, limit: Int) = apiService.getDog2(breed, limit)
+
+    suspend fun writeDogs(dogs: List<Dog>) {
+        db.dogDao().writeDogs(dogs)
     }
+
+    suspend fun getDogsFromCache(breed: String) = db.dogDao().readAllDogs(breed)
 }

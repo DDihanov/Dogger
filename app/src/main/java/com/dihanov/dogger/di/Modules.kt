@@ -5,6 +5,7 @@ import com.dihanov.dogger.BuildConfig
 import com.dihanov.dogger.data.local.db.AppDb
 import com.dihanov.dogger.data.local.mapper.DogMapper
 import com.dihanov.dogger.data.local.repository.DogRepository
+import com.dihanov.dogger.data.local.usecase.DogsSearchUseCase
 import com.dihanov.dogger.data.remote.ApiEndpoint
 import com.dihanov.dogger.data.remote.ApiService
 import com.dihanov.dogger.ui.main.SearchViewModel
@@ -19,7 +20,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 val viewModelModule = module {
     viewModel {
-        SearchViewModel(get())
+        SearchViewModel(get(), get())
     }
 }
 
@@ -29,8 +30,12 @@ val utilModule = module {
 
 val repositoryModule = module {
     single {
-        DogRepository(get(), get(), get())
+        DogRepository(get(), get())
     }
+}
+
+val useCaseModule = module {
+    factory { DogsSearchUseCase(get(), get()) }
 }
 
 val apiModule = module {

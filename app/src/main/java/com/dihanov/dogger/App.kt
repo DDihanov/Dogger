@@ -23,7 +23,8 @@ class App : Application() {
                 retrofitModule,
                 dbModule,
                 utilModule,
-                mapperModule
+                mapperModule,
+                useCaseModule
             ))
         }
     }
