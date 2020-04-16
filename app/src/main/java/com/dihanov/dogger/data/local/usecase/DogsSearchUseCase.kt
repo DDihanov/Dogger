@@ -14,20 +14,24 @@ class DogsSearchUseCase(private val dogRepository: DogRepository, private val do
         val shouldFetch = params.shouldFetch
 
         return if (shouldFetch) {
-            val response = ApiResponse.create(dogRepository.getDog2(breed, limit))
+            try {
+                val response = ApiResponse.create(dogRepository.getDog2(breed, limit))
 
-            when (response) {
-                is ApiSuccessResponse -> {
-                    val newList = dogMapper.mapFromEntity(Pair(breed, response.body.message))
-                    dogRepository.writeDogs(newList)
-                    success(dogRepository.getDogsFromCache(breed))
+                when (response) {
+                    is ApiSuccessResponse -> {
+                        val newList = dogMapper.mapFromEntity(Pair(breed, response.body.message))
+                        dogRepository.writeDogs(newList)
+                        success(dogRepository.getDogsFromCache(breed))
+                    }
+                    is ApiErrorResponse -> {
+                        error(cached, response.errorMessage)
+                    }
+                    is ApiEmptyResponse -> {
+                        error(cached, "Empty response")
+                    }
                 }
-                is ApiErrorResponse -> {
-                    error(cached, response.errorMessage)
-                }
-                is ApiEmptyResponse -> {
-                    error(cached, "Empty response")
-                }
+            } catch (ex: Exception) {
+                error(cached, ex.message.toString())
             }
         } else {
             success(cached)
