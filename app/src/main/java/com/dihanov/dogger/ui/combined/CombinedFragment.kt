@@ -22,18 +22,21 @@ class CombinedFragment : BaseFragment() {
 
     override fun subscribeObservers() {
         viewModel.combinedDogsCats.observe(viewLifecycleOwner, Observer {
-            val status = it.status
-            when (status) {
-                Status.LOADING -> {
-                    showLoader()
-                }
-                Status.ERROR -> {
-                    hideLoader()
-                }
-                Status.SUCCESS -> {
-                    hideLoader()
-                    combinedAdapter?.clear()
-                    combinedAdapter?.add(it.data!!)
+            val data = it.getContentIfNotHandled()
+            data?.let {
+                val status = it.status
+                when (status) {
+                    Status.LOADING -> {
+                        showLoader()
+                    }
+                    Status.ERROR -> {
+                        hideLoader()
+                    }
+                    Status.SUCCESS -> {
+                        hideLoader()
+                        combinedAdapter?.clear()
+                        combinedAdapter?.add(it.data!!)
+                    }
                 }
             }
         })
