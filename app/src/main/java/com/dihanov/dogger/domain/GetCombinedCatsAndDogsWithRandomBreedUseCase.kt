@@ -1,0 +1,73 @@
+package com.dihanov.dogger.domain
+
+import com.dihanov.base_domain.domain.BaseUseCase
+import com.dihanov.base_domain.domain.Resource
+import com.dihanov.catsearch.data.local.repository.CatRepository
+import com.dihanov.dogger.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase.Params
+import com.dihanov.dogsearch.data.local.repository.DogRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withContext
+import kotlin.math.min
+
+class GetCombinedCatsAndDogsWithRandomBreedUseCase(
+    private val dogRepository: DogRepository,
+    private val catsRepository: CatRepository
+) : BaseUseCase<List<String>, Params>() {
+    companion object {
+        const val MAX_CAT_BREEDS = 100
+    }
+    override suspend fun execute(params: Params): Resource<List<String>> {
+        return try {
+            withContext(Dispatchers.IO) {
+                //fetch all breed lists
+                val dogBreeds = dogRepository.getDogBreeds().breeds
+                val catBreeds = catsRepository.getCatBreeds(MAX_CAT_BREEDS)
+
+                //pick random spot in the array
+                var startRandom = (0..dogBreeds.count()).random()
+                var endRandom = min(dogBreeds.count(), startRandom + params.randomBreedsToFetch)
+
+                val listOfDogs = dogBreeds.subList(startRandom, endRandom)
+
+                //fetch # of images from the API for all the random breeds
+                val listToAddDogs = mutableListOf<String>()
+                for (dogBreed in listOfDogs) {
+                    val fetchedBreed = async {
+                        dogRepository.getDog2(
+                            dogBreed,
+                            params.limitOfImagesPerBreed
+                        )
+                    }.await()
+                    listToAddDogs.addAll(fetchedBreed.message)
+                }
+
+                //do same thing for cats
+                startRandom = (0..catBreeds.count()).random()
+                endRandom = min(catBreeds.count(), startRandom + params.randomBreedsToFetch)
+                val listOfCats = catBreeds.subList(startRandom, endRandom)
+
+                val listToAddCats = mutableListOf<String>()
+                for (catBreed in listOfCats) {
+                    val fetchedBreed = async {
+                        catsRepository.getCats(
+                            catBreed.breed,
+                            params.limitOfImagesPerBreed
+                        )
+                    }.await()
+                    listToAddCats.addAll(fetchedBreed.map { item -> item.url })
+                }
+
+                //combine both arrays into one list of images
+                listToAddCats.addAll(listToAddDogs)
+                listToAddCats.shuffle()
+
+                success(listToAddCats)
+            }
+        } catch (ex: Exception) {
+            error(listOf(), ex.message.toString())
+        }
+    }
+
+    data class Params(val randomBreedsToFetch: Int, val limitOfImagesPerBreed: Int)
+}

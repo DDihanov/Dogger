@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/dog_search_nav_graph">
 
+    <include app:graph="@navigation/dog_nav_graph" />
+    <include app:graph="@navigation/cat_nav_graph" />
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.dihanov.dogger.ui.main.SearchFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
-        <action
-            android:id="@+id/action_mainFragment_to_dogDetailsFragment"
-            app:destination="@id/dogDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/dogDetailsFragment"
-        android:name="com.dihanov.dogger.ui.details.DogDetailsFragment"
-        android:label="DogDetailsFragment" >
-        <argument
-            android:name="dogImgUrl"
-            app:argType="string" />
-    </fragment>
+        android:id="@+id/combinedFragment"
+        android:name="com.dihanov.dogger.ui.combined.CombinedFragment"
+        android:label="@string/cats_and_dogs" />
 </navigation>
