@@ -6,8 +6,6 @@
 
     <include app:graph="@navigation/dog_nav_graph" />
     <include app:graph="@navigation/cat_nav_graph" />
-    <fragment
-        android:id="@+id/combinedFragment"
-        android:name="com.dihanov.dogger.ui.combined.CombinedFragment"
-        android:label="@string/cats_and_dogs" />
+    <include app:graph="@navigation/combined_nav_graph" />
+
 </navigation>

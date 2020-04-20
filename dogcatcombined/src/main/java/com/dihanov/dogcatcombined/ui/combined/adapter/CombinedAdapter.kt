@@ -1,10 +1,10 @@
-package com.dihanov.dogger.ui.combined.adapter
+package com.dihanov.dogcatcombined.ui.combined.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dihanov.base_ui.ui.ClickableAdapter
-import com.dihanov.dogger.R
+import com.dihanov.dogcatcombined.R
 
 class CombinedAdapter(private var items: List<String> = listOf()) :
     ClickableAdapter<RecyclerView.ViewHolder, String>() {
@@ -12,7 +12,9 @@ class CombinedAdapter(private var items: List<String> = listOf()) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.combined_search_item, parent, false)
-        return CombinedViewHolder(view)
+        return CombinedViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int = items.count()

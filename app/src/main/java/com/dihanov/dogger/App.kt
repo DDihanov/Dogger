@@ -6,8 +6,8 @@ import com.dihanov.catsearch.di.catRepository
 import com.dihanov.catsearch.di.catUseCaseModule
 import com.dihanov.catsearch.di.catViewModelModule
 import com.dihanov.di.utilModule
-import com.dihanov.dogger.di.combinedUseCaseModule
-import com.dihanov.dogger.di.combinedViewModelModule
+import com.dihanov.dogcatcombined.di.combinedUseCaseModule
+import com.dihanov.dogcatcombined.di.combinedViewModelModule
 import com.dihanov.dogsearch.di.dogRepository
 import com.dihanov.dogsearch.di.dogUseCaseModule
 import com.dihanov.dogsearch.di.dogViewModelModule

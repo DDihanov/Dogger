@@ -1,9 +1,9 @@
-package com.dihanov.dogger.ui.combined
+package com.dihanov.dogcatcombined.ui.combined
 
 import androidx.lifecycle.*
 import com.dihanov.base_domain.domain.Resource
-import com.dihanov.dogger.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase
-import com.dihanov.dogger.ui.combined.uimodel.CombinedDogCat
+import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase
+import com.dihanov.dogcatcombined.ui.combined.uimodel.CombinedDogCat
 import com.dihanov.util.Event
 import kotlinx.coroutines.Dispatchers
 

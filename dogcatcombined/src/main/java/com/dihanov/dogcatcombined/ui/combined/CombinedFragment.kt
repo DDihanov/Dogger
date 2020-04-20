@@ -1,4 +1,4 @@
-package com.dihanov.dogger.ui.combined
+package com.dihanov.dogcatcombined.ui.combined
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.dihanov.base_domain.domain.Status
 import com.dihanov.base_ui.ui.BaseFragment
 import com.dihanov.base_ui.ui.ClickableAdapter
-import com.dihanov.dogger.R
-import com.dihanov.dogger.ui.combined.adapter.CombinedAdapter
-import com.dihanov.dogger.ui.combined.uimodel.CombinedDogCat
+import com.dihanov.dogcatcombined.R
+
+import com.dihanov.dogcatcombined.ui.combined.adapter.CombinedAdapter
+import com.dihanov.dogcatcombined.ui.combined.uimodel.CombinedDogCat
 import kotlinx.android.synthetic.main.combined_fragment.*
 import kotlinx.android.synthetic.main.combined_fragment.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

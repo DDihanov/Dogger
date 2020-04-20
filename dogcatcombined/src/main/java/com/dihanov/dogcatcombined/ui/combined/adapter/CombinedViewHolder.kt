@@ -1,4 +1,4 @@
-package com.dihanov.dogger.ui.combined.adapter
+package com.dihanov.dogcatcombined.ui.combined.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

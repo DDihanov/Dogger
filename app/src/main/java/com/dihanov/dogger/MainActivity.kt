@@ -26,6 +26,7 @@ class MainActivity : BaseActivity() {
         //add all subgraphs to the main navgraph
         navController.graph.addAll(navController.navInflater.inflate(R.navigation.dog_nav_graph))
         navController.graph.addAll(navController.navInflater.inflate(R.navigation.cat_nav_graph))
+        navController.graph.addAll(navController.navInflater.inflate(R.navigation.combined_nav_graph))
 
         navigation.setOnNavigationItemSelectedListener { item ->
             keyboardManager.hideKeyboard(container)

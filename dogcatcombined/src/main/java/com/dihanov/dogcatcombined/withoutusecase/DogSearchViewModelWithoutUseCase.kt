@@ -1,4 +1,4 @@
-package com.dihanov.dogger.withoutusecase
+package com.dihanov.dogcatcombined.withoutusecase
 
 import androidx.lifecycle.*
 import com.dihanov.base_data.data.local.mapper.DogMapper

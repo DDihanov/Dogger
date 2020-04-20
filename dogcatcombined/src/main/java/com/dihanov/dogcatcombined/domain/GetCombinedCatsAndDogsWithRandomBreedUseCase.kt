@@ -1,9 +1,9 @@
-package com.dihanov.dogger.domain
+package com.dihanov.dogcatcombined.domain
 
 import com.dihanov.base_domain.domain.BaseUseCase
 import com.dihanov.base_domain.domain.Resource
 import com.dihanov.catsearch.data.local.repository.CatRepository
-import com.dihanov.dogger.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase.Params
+import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase.Params
 import com.dihanov.dogsearch.data.local.repository.DogRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

@@ -1,10 +1,10 @@
-package com.dihanov.dogger.withoutusecase
+package com.dihanov.dogcatcombined.withoutusecase
 
 import androidx.lifecycle.*
 import com.dihanov.base_domain.domain.Resource
 import com.dihanov.catsearch.data.local.repository.CatRepository
-import com.dihanov.dogger.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase
-import com.dihanov.dogger.ui.combined.uimodel.CombinedDogCat
+import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase
+import com.dihanov.dogcatcombined.ui.combined.uimodel.CombinedDogCat
 import com.dihanov.dogsearch.data.local.repository.DogRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
