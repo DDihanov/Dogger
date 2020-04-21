@@ -7,6 +7,7 @@ import com.dihanov.dogsearch.data.local.repository.DogRepository
 import com.dihanov.dogsearch.ui.uimodel.GetDog
 import kotlinx.coroutines.Dispatchers
 
+//compare to DogSearchUseCase in dogsearch module
 class DogSearchViewModelWithoutUseCase(private val dogRepository: DogRepository, private val dogMapper: DogMapper) : ViewModel() {
 
     private val _dogImages = MutableLiveData<GetDog>()

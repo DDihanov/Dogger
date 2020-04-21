@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.min
 
+//compare to GetCombinedCatsAndDogsWithRandomBreedUseCase in dogcatcombined.domain module
 class CombinedViewModelWithoutUseCase(
     private val dogRepository: DogRepository,
     private val catsRepository: CatRepository
