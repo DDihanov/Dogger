@@ -7,7 +7,6 @@ import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUs
 import com.dihanov.dogcatcombined.ui.combined.uimodel.CombinedDogCat
 import com.dihanov.dogsearch.data.local.repository.DogRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import kotlin.math.min
 
@@ -38,12 +37,13 @@ class CombinedViewModelWithoutUseCase(
                         //fetch # of images from the API for all the random breeds
                         val listToAddDogs = mutableListOf<String>()
                         for (dogBreed in listOfDogs) {
-                            val fetchedBreed = async {
-                                dogRepository.getDog2(
-                                    dogBreed,
-                                    params.numberOfImagesPerBreed
-                                )
-                            }.await()
+                            val fetchedBreed =
+                                withContext(Dispatchers.Default) {
+                                    dogRepository.getDog2(
+                                        dogBreed,
+                                        params.numberOfImagesPerBreed
+                                    )
+                                }
                             listToAddDogs.addAll(fetchedBreed.message)
                         }
 
@@ -54,12 +54,13 @@ class CombinedViewModelWithoutUseCase(
 
                         val listToAddCats = mutableListOf<String>()
                         for (catBreed in listOfCats) {
-                            val fetchedBreed = async {
-                                catsRepository.getCats(
-                                    catBreed.breed,
-                                    params.numberOfImagesPerBreed
-                                )
-                            }.await()
+                            val fetchedBreed =
+                                withContext(Dispatchers.Default) {
+                                    catsRepository.getCats(
+                                        catBreed.breed,
+                                        params.numberOfImagesPerBreed
+                                    )
+                                }
                             listToAddCats.addAll(fetchedBreed.map { item -> item.url })
                         }
 
