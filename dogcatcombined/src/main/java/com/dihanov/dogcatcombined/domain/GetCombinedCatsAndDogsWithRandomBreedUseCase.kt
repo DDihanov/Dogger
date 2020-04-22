@@ -5,8 +5,8 @@ import com.dihanov.base_domain.domain.Resource
 import com.dihanov.catsearch.data.local.repository.CatRepository
 import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase.Params
 import com.dihanov.dogsearch.data.local.repository.DogRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlin.math.min
 
 class GetCombinedCatsAndDogsWithRandomBreedUseCase(
@@ -16,12 +16,16 @@ class GetCombinedCatsAndDogsWithRandomBreedUseCase(
     companion object {
         const val MAX_CAT_BREEDS = 100
     }
+
     override suspend fun execute(params: Params): Resource<List<String>> {
         return try {
-            withContext(Dispatchers.IO) {
+            coroutineScope {
                 //fetch all breed lists
-                val dogBreeds = dogRepository.getDogBreeds().breeds
-                val catBreeds = catsRepository.getCatBreeds(MAX_CAT_BREEDS)
+                val dogBreedsDeferred = async { dogRepository.getDogBreeds().breeds }
+                val catBreedsDeferred = async { catsRepository.getCatBreeds(MAX_CAT_BREEDS) }
+
+                val dogBreeds = dogBreedsDeferred.await()
+                val catBreeds = catBreedsDeferred.await()
 
                 //pick random spot in the array
                 var startRandom = (0..dogBreeds.count()).random()
@@ -32,13 +36,12 @@ class GetCombinedCatsAndDogsWithRandomBreedUseCase(
                 //fetch # of images from the API for all the random breeds
                 val listToAddDogs = mutableListOf<String>()
                 for (dogBreed in listOfDogs) {
-                    val fetchedBreed =
-                        withContext(Dispatchers.IO) {
-                            dogRepository.getDog2(
-                                dogBreed,
-                                params.limitOfImagesPerBreed
-                            )
-                        }
+                    val fetchedBreed = coroutineScope {
+                        dogRepository.getDog2(
+                            dogBreed,
+                            params.limitOfImagesPerBreed
+                        )
+                    }
                     listToAddDogs.addAll(fetchedBreed.message)
                 }
 
@@ -50,7 +53,7 @@ class GetCombinedCatsAndDogsWithRandomBreedUseCase(
                 val listToAddCats = mutableListOf<String>()
                 for (catBreed in listOfCats) {
                     val fetchedBreed =
-                        withContext(Dispatchers.IO) {
+                        coroutineScope {
                             catsRepository.getCats(
                                 catBreed.breed,
                                 params.limitOfImagesPerBreed
