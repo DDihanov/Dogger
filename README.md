@@ -3,3 +3,5 @@ Example app that searches for dog/cat images using Koin, Coroutines, MVVM, LiveD
 
 Diagram for project overview:
 ![Overview](https://i.imgur.com/RpC5oLH.png)
+
+![App](https://i.imgur.com/yf35GdO.gifv)
