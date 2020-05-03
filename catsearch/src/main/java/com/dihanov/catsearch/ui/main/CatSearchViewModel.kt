@@ -1,7 +1,7 @@
 package com.dihanov.catsearch.ui.main
 
 import androidx.lifecycle.*
-import com.dihanov.base_domain.domain.Resource
+import com.dihanov.base_domain.Resource
 import com.dihanov.catsearch.domain.CatsSearchUseCase
 import com.dihanov.catsearch.domain.GetCachedCatsUseCase
 import com.dihanov.catsearch.ui.uimodel.GetCat

@@ -3,12 +3,13 @@ package com.dihanov.dogsearch.ui.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dihanov.base_data.data.local.entity.Dog
-import com.dihanovdogsearch.R
+import com.dihanov.base_ui.ClickableAdapter
+import com.dihanov.dogsearch.R
+import com.dihanov.dogsearch.data.local.entity.Dog
 import org.koin.core.KoinComponent
 
 class SearchAdapter(private var items: List<Dog> = listOf()) :
-    com.dihanov.base_ui.ui.ClickableAdapter<RecyclerView.ViewHolder, String>(), KoinComponent {
+    ClickableAdapter<RecyclerView.ViewHolder, String>(), KoinComponent {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =

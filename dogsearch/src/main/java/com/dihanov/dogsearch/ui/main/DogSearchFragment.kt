@@ -8,12 +8,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.dihanov.SearchView
-import com.dihanov.base_domain.domain.Status
-import com.dihanov.base_ui.ui.BaseFragment
+import com.dihanov.base_domain.Status
+import com.dihanov.base_ui.BaseFragment
+import com.dihanov.base_ui.ClickableAdapter
+import com.dihanov.dogsearch.R
 import com.dihanov.dogsearch.ui.main.adapter.SearchAdapter
 import com.dihanov.dogsearch.ui.uimodel.GetDog
 import com.dihanov.util.KeyboardManager
-import com.dihanovdogsearch.R
 import kotlinx.android.synthetic.main.dog_search_fragment.*
 import kotlinx.android.synthetic.main.dog_search_fragment.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -89,7 +90,7 @@ class DogSearchFragment : BaseFragment(), SearchView.SearchQuerySubmitListener {
         if (adapter == null) {
             SearchAdapter().apply {
                 this.setOnRecyclerViewSelected(object :
-                    com.dihanov.base_ui.ui.ClickableAdapter.RecyclerViewItemSelectedListener<String> {
+                    ClickableAdapter.RecyclerViewItemSelectedListener<String> {
                     override fun onItemSelected(item: String) {
                         findNavController().navigate(
                             R.id.dogDetailsFragment,

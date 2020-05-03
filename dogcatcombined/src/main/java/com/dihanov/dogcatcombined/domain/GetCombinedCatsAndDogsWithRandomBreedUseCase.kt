@@ -1,10 +1,10 @@
 package com.dihanov.dogcatcombined.domain
 
-import com.dihanov.base_domain.domain.BaseUseCase
-import com.dihanov.base_domain.domain.Resource
-import com.dihanov.catsearch.data.local.repository.CatRepository
+import com.dihanov.base_domain.BaseUseCase
+import com.dihanov.base_domain.Resource
+import com.dihanov.catsearch.data.CatRepository
 import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase.Params
-import com.dihanov.dogsearch.data.local.repository.DogRepository
+import com.dihanov.dogsearch.data.DogRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlin.math.min

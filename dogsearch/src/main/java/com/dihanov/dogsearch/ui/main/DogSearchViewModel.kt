@@ -1,7 +1,7 @@
 package com.dihanov.dogsearch.ui.main
 
 import androidx.lifecycle.*
-import com.dihanov.base_domain.domain.Resource
+import com.dihanov.base_domain.Resource
 import com.dihanov.dogsearch.domain.DogsSearchUseCase
 import com.dihanov.dogsearch.domain.GetCachedDogsUseCase
 import com.dihanov.dogsearch.ui.uimodel.GetDog

@@ -16,7 +16,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
-
+    buildTypes {
+        debug {
+            buildConfigField("String", "DOG_BASE_URL", "\"https://dog.ceo/api/\"")
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "DOG_BASE_URL", "\"https://dog.ceo/api/\"")
+        }
+    }
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -76,6 +85,18 @@ dependencies {
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navVersion"
+
+
+    // database
+    implementation "androidx.room:room-rxjava2:$rootProject.roomDatabaseVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomDatabaseVersion"
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$rootProject.roomDatabaseVersion"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.interceptorVersion"
 
     implementation project(':util')
     implementation project(':base_ui')

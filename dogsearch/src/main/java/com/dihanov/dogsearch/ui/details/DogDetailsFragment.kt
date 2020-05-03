@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.dihanovdogsearch.R
+import com.dihanov.base_ui.BaseFragment
+import com.dihanov.dogsearch.R
 import kotlinx.android.synthetic.main.details_fragment.view.*
 
-class DogDetailsFragment : com.dihanov.base_ui.ui.BaseFragment() {
+class DogDetailsFragment : BaseFragment() {
     override fun subscribeObservers() {
     }
 

@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.dihanov.base_domain.domain.Status
-import com.dihanov.base_ui.ui.BaseFragment
-import com.dihanov.base_ui.ui.ClickableAdapter
+import com.dihanov.base_domain.Status
+import com.dihanov.base_ui.BaseFragment
+import com.dihanov.base_ui.ClickableAdapter
 import com.dihanov.dogcatcombined.R
 
 import com.dihanov.dogcatcombined.ui.combined.adapter.CombinedAdapter

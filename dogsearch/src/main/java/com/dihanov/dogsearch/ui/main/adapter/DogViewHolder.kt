@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.dihanov.base_ui.ui.ClickableAdapter
+import com.dihanov.base_ui.ClickableAdapter
 import kotlinx.android.synthetic.main.search_item.view.*
 
 class DogViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {

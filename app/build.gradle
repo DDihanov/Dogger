@@ -58,8 +58,6 @@ dependencies {
     implementation project(path: ':dogsearch')
     implementation project(path: ':catsearch')
     implementation project(path: ':dogcatcombined')
-    implementation project(path: ':base_data')
-    implementation project(path: ':base_ui')
-    implementation project(path: ':base_domain')
+    implementation project(path: ':db')
     implementation project(path: ':util')
 }

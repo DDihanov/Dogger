@@ -1,9 +1,9 @@
 package com.dihanov.dogcatcombined.withoutusecase
 
 import androidx.lifecycle.*
-import com.dihanov.base_data.data.local.mapper.DogMapper
-import com.dihanov.base_domain.domain.Resource
-import com.dihanov.dogsearch.data.local.repository.DogRepository
+import com.dihanov.base_domain.Resource
+import com.dihanov.dogsearch.data.DogRepository
+import com.dihanov.dogsearch.data.mapper.DogMapper
 import com.dihanov.dogsearch.ui.uimodel.GetDog
 import kotlinx.coroutines.Dispatchers
 

@@ -1,10 +1,10 @@
 package com.dihanov.catsearch.domain
 
-import com.dihanov.base_data.data.local.entity.Cat
-import com.dihanov.base_data.data.local.mapper.CatMapper
-import com.dihanov.base_domain.domain.BaseUseCase
-import com.dihanov.base_domain.domain.Resource
-import com.dihanov.catsearch.data.local.repository.CatRepository
+import com.dihanov.base_domain.BaseUseCase
+import com.dihanov.base_domain.Resource
+import com.dihanov.catsearch.data.CatRepository
+import com.dihanov.catsearch.data.local.entity.Cat
+import com.dihanov.catsearch.data.mapper.CatMapper
 
 
 class CatsSearchUseCase(private val catRepository: CatRepository, private val catMapper: CatMapper) : BaseUseCase<List<Cat>, CatsSearchUseCase.Params>() {

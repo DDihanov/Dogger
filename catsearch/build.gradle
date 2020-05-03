@@ -17,6 +17,19 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
+    buildTypes {
+        debug {
+            buildConfigField("String", "CAT_BASE_URL", "\"https://api.thecatapi.com/v1/\"")
+            buildConfigField("String", "CAT_API_KEY", "\"c3d8b49c-315f-4e98-a79b-c0c599cbc093\"")
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "CAT_BASE_URL", "\"https://api.thecatapi.com/v1/\"")
+            buildConfigField("String", "CAT_API_KEY", "\"c3d8b49c-315f-4e98-a79b-c0c599cbc093\"")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -72,6 +85,17 @@ dependencies {
     // glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    // database
+    implementation "androidx.room:room-rxjava2:$rootProject.roomDatabaseVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomDatabaseVersion"
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$rootProject.roomDatabaseVersion"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.interceptorVersion"
 
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navVersion"

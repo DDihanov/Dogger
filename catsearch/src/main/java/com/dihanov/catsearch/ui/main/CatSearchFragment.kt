@@ -8,8 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.dihanov.SearchView
-import com.dihanov.base_domain.domain.Status
-import com.dihanov.base_ui.ui.BaseFragment
+import com.dihanov.base_domain.Status
+import com.dihanov.base_ui.BaseFragment
+import com.dihanov.base_ui.ClickableAdapter
 import com.dihanov.catsearch.R
 import com.dihanov.catsearch.ui.main.adapter.SearchAdapter
 import com.dihanov.catsearch.ui.uimodel.GetCat
@@ -89,7 +90,7 @@ class CatSearchFragment : BaseFragment(), SearchView.SearchQuerySubmitListener {
         if (adapter == null) {
             SearchAdapter().apply {
                 this.setOnRecyclerViewSelected(object :
-                    com.dihanov.base_ui.ui.ClickableAdapter.RecyclerViewItemSelectedListener<String> {
+                    ClickableAdapter.RecyclerViewItemSelectedListener<String> {
                     override fun onItemSelected(item: String) {
                         findNavController().navigate(
                             R.id.catDetailsFragment,

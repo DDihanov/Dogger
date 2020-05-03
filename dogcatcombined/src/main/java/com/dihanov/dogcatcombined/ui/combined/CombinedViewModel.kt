@@ -1,7 +1,7 @@
 package com.dihanov.dogcatcombined.ui.combined
 
 import androidx.lifecycle.*
-import com.dihanov.base_domain.domain.Resource
+import com.dihanov.base_domain.Resource
 import com.dihanov.dogcatcombined.domain.GetCombinedCatsAndDogsWithRandomBreedUseCase
 import com.dihanov.dogcatcombined.ui.combined.uimodel.CombinedDogCat
 import com.dihanov.util.Event

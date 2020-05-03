@@ -3,7 +3,7 @@ package com.dihanov.dogcatcombined.ui.combined.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dihanov.base_ui.ui.ClickableAdapter
+import com.dihanov.base_ui.ClickableAdapter
 import com.dihanov.dogcatcombined.R
 
 class CombinedAdapter(private var items: List<String> = listOf()) :
