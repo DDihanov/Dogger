@@ -2,10 +2,14 @@ package com.dihanov.dogger.ui
 
 import android.os.Bundle
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.dihanov.base_ui.BaseActivity
 import com.dihanov.dogger.R
 import com.dihanov.util.KeyboardManager
+import kotlinx.android.synthetic.main.main_activity.*
 import org.koin.android.ext.android.inject
 
 

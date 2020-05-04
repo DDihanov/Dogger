@@ -59,5 +59,6 @@ dependencies {
     implementation project(path: ':catsearch')
     implementation project(path: ':dogcatcombined')
     implementation project(path: ':db')
+    implementation project(':base_ui')
     implementation project(path: ':util')
 }
