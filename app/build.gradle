@@ -55,10 +55,11 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navVersion"
 
-    implementation project(path: ':dogsearch')
-    implementation project(path: ':catsearch')
-    implementation project(path: ':dogcatcombined')
-    implementation project(path: ':db')
+    implementation project(':dogsearch')
+    implementation project(':catsearch')
+    implementation project(':dogcatcombined')
+    implementation project(':db')
     implementation project(':base_ui')
-    implementation project(path: ':util')
+    implementation project(':navigation')
+    implementation project(':util')
 }

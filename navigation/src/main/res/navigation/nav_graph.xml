@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--even though this is red compile time, it will fix itself on runtime-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dogSearchFragment">
+    <fragment
+        android:id="@+id/dogSearchFragment"
+        android:name="com.dihanov.dogsearch.ui.main.DogSearchFragment"
+        android:label="@string/search_for_dogs"
+        tools:layout="@layout/dog_search_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_dogDetailsFragment"
+            app:destination="@id/dogDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogDetailsFragment"
+        android:name="com.dihanov.dogsearch.ui.details.DogDetailsFragment"
+        android:label="DogDetailsFragment" >
+        <argument
+            android:name="dogImgUrl"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/combinedFragment"
+        android:name="com.dihanov.dogcatcombined.ui.combined.CombinedFragment"
+        android:label="@string/cats_and_dogs" />
+
+    <fragment
+        android:id="@+id/catSearchFragment"
+        android:name="com.dihanov.catsearch.ui.main.CatSearchFragment"
+        android:label="@string/search_for_cats"
+        tools:layout="@layout/cat_search_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_catDetailsFragment"
+            app:destination="@id/catDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catDetailsFragment"
+        android:name="com.dihanov.catsearch.ui.details.CatDetailsFragment"
+        android:label="CatDetailsFragment" >
+        <argument
+            android:name="catImgUrl"
+            app:argType="string" />
+    </fragment>
+</navigation>

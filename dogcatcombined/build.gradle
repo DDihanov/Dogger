@@ -74,6 +74,7 @@ dependencies {
     implementation project(path: ':catsearch')
     implementation project(path: ':base_data')
     implementation project(path: ':base_ui')
+    implementation project(':navigation')
     implementation project(path: ':base_domain')
     implementation project(path: ':util')
 }

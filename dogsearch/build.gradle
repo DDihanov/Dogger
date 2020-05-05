@@ -103,4 +103,5 @@ dependencies {
     implementation project(':base_domain')
     implementation project(':base_data')
     implementation project(':searchview')
+    implementation project(':navigation')
 }
