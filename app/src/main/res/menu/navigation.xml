@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dog_search"
+        android:icon="@drawable/icon_dog"
+        android:title="@string/search_for_dogs" />
+
+    <item
+        android:id="@+id/cat_search"
+        android:icon="@drawable/icon_cat"
+        android:title="@string/search_for_cats" />
+
+    <item
+        android:id="@+id/combined_search"
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/cats_and_dogs" />
+</menu>

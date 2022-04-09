@@ -1,0 +1,61 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+ext {
+    minSdkVersion = 21
+    targetSdkVersion = 29
+    compileSdkVersion = 29
+    buildToolsVersion = '29.0.3'
+    constraintLayoutVersion = '1.1.3'
+    recyclerViewVersion = '1.1.0'
+
+    // App dependencies
+    glideVersion = '3.7.0'
+    roomDatabaseVersion = '2.2.5'
+    ktxVersion = '1.2.0'
+    supportLibraryVersion = '1.1.0'
+    timberVersion = '4.5.1'
+    lifecycleVersion = '2.2.0'
+    retrofitVersion = '2.8.1'
+    moshiVersion = '1.9.2'
+    moshiConverterVersion = '2.8.1'
+    livedataExtVersion = "2.2.0"
+    koinVersion = '2.1.5'
+    glideVersion = "4.11.0"
+    navVersion = "2.3.0-alpha04"
+    interceptorVersion = '3.12.8'
+
+    // Test dependencies
+    junitVersion = '4.12'
+    espressoVersion = '3.1.0'
+    mockitoVersion = '2.15.0'
+    archCoreTestingVersion = '2.1.0'
+    coroutinesTestingVersion = '1.3.3'
+}
+
+buildscript {
+    ext.kotlin_version = '1.3.61'
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

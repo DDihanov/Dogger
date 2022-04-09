@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dogger</string>
+    <string name="search_for_dogs">Search for dogs</string>
+    <string name="search_for_cats">Search for cats</string>
+</resources>
