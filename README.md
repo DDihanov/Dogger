@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 # Dogger
 Example app that searches for dog/cat images using Koin, Coroutines, MVVM, LiveData, Room, Retrofit, Moshi, AAC and CLEAN
 
